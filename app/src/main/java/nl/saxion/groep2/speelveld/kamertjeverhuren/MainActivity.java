@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.ViewGroup;
 
-import nl.saxion.groep2.speelveld.kamertjeverhuren.view.GameBoard;
+import nl.saxion.groep2.speelveld.kamertjeverhuren.view.GameBoardView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // initialize gameboard
-        GameBoard gameBoard = new GameBoard(this);
+        GameBoardView gameBoardView = new GameBoardView(this);
 
         // get lowest screen width or height to create a square
         DisplayMetrics metrics = new DisplayMetrics();
@@ -23,6 +23,11 @@ public class MainActivity extends AppCompatActivity {
         int minSide = Math.min(metrics.heightPixels, metrics.widthPixels);
 
         ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(minSide, minSide);
-        this.addContentView(gameBoard, layoutParams);
+        this.addContentView(gameBoardView, layoutParams);
+
+        gameBoardView.invalidate();
+
+
+
     }
 }
